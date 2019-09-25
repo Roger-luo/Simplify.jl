@@ -6,6 +6,9 @@
 
 **Simplify.jl** implements methods for symbolic algebraic simplification in the Julia language.
 
+**Warning** this is a custom fork of Simplify for quantum information,
+features in this repo will be PR to upstream or new package eventually.
+
 ## Examples
 
 Normalization involves determining the unique normal form of an expression ("simplest" equivalent expression) through repeated application of rules. *Simplify.jl* will use its [internal set of algebraic rules](./src/rules.jl) by default, which includes trigonometry, logarithms, differentiation (based on [DiffRules.jl](https://github.com/JuliaDiff/DiffRules.jl)), and more.
