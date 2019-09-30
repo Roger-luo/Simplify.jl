@@ -1,5 +1,6 @@
 module Simplify
 
+include("../specialsets/src/SpecialSets.jl")
 
 # Base types
 include("types.jl")

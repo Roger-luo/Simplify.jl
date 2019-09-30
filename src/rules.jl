@@ -1,4 +1,4 @@
-using SpecialSets
+using .SpecialSets
 
 export rules
 
