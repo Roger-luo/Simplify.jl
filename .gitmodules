@@ -1,0 +1,6 @@
+[submodule "SpecialSets.jl"]
+	path = SpecialSets.jl
+	url = https://github.com/Roger-luo/SpecialSets.jl.git
+[submodule "specialsets"]
+	path = specialsets
+	url = https://github.com/Roger-luo/SpecialSets.jl.git

@@ -13,6 +13,7 @@ function _term(ex::Expr)
     Expr(:call, Expr, Meta.quot(ex.head), _term.(ex.args)...)
 end
 _term(x) = x
+_term(x::Complex) = convert(Term, x)
 
 
 struct Term
@@ -46,6 +47,8 @@ macro syms(xs::Symbol...)
     esc(Expr(:block, syms..., results))
 end
 
+struct Im end
+Base.convert(::Type{Term}, x::Complex) = Term(Expr(:call, +, real(x), Expr(:call, *, imag(x), Im())))
 
 struct Variable
     name::Symbol
@@ -73,6 +76,7 @@ end
 _show_term(::Irrational{sym}) where sym = sym
 _show_term(x::Symbolic) = x.name
 _show_term(x::Variable) = x.name
+_show_term(x::Im) = "im"
 _show_term(x::Symbol) = Meta.quot(x)
 _show_term(x) = x
 function Base.show(io::IO, t::Term)
