@@ -82,8 +82,8 @@ function rules(::Val{:BASIC})
             -x * y     => -(x * y)
             (inv(-x)   => -inv(x)) where {_image(x, Nonzero)}
 
-            adjoint(x) => x where {σ -> isreal(σ[x])}
-            conj(x) => x where {σ -> isreal(σ[x])}
+            (adjoint(x) => x) where {σ -> isreal(σ[x])}
+            (conj(x) => x) where {σ -> isreal(σ[x])}
 
             x ^ 0      => one(x)
             x ^ 0.0    => one(x)

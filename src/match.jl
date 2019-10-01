@@ -76,7 +76,7 @@ function match(::Type{Term}, p::Expr, s::Expr, Θ)
 
     _match(p, s, Θ)
 end
-match(::Type{Term}, p, s, Θ) = (typeof(s) <: typeof(p) && p == s) ? Θ : zero(Match)
+match(::Type{Term}, p, s, Θ) = p == s ? Θ : zero(Match)
 
 function _match(f::Expr, g::Expr, Θ)
     length(f.args) == length(g.args) || return zero(Match)

@@ -83,6 +83,17 @@ _show_term(x::Variable) = x.name
 _show_term(x::Im) = :im
 _show_term(x::Symbol) = Meta.quot(x)
 _show_term(x) = x
+
+function _show_term(x::Expr)
+    x.head === :call || return x
+    
+    if x.args[1] === :sqrt
+        return Expr(:call, :√, x.args[2:end]...)
+    else
+        return x
+    end
+end
+
 function Base.show(io::IO, t::Term)
     ex = MacroTools.postwalk(_show_term, get(t))
     macro_call = Expr(:macrocall, Symbol("@term"), nothing, ex)
